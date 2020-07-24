@@ -5,3 +5,4 @@ models-paper
 build
 dist
 gitana.egg-info
+*.bak

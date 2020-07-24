@@ -119,6 +119,7 @@ class Git2DbMain():
 
             if self._references:
                 if ref_name in self._references:
+                    print('creating extractor', ref_name)
                     git_ref_extractor = Git2DbReference(self._db_name, repo_id, self._git_repo_path,
                                                         self._before_date, self._import_type, ref_name, ref_type, self._sha,
                                                         self._config, self._log_path)
