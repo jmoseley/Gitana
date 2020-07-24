@@ -21,7 +21,7 @@ class Git2DbMain():
 
     def __init__(self, db_name, project_name,
                  repo_name, git_repo_path, before_date, import_type, references, num_processes,
-                 config, log_root_path):
+                 config, log_root_path, sha):
         """
         :type db_name: str
         :param db_name: the name of an existing DB
@@ -65,6 +65,8 @@ class Git2DbMain():
         self._import_type = import_type
 
         self._references = references
+
+        self._sha = sha
 
         if num_processes:
             self._num_processes = num_processes
@@ -118,14 +120,14 @@ class Git2DbMain():
             if self._references:
                 if ref_name in self._references:
                     git_ref_extractor = Git2DbReference(self._db_name, repo_id, self._git_repo_path,
-                                                        self._before_date, self._import_type, ref_name, ref_type, "",
+                                                        self._before_date, self._import_type, ref_name, ref_type, self._sha,
                                                         self._config, self._log_path)
 
                     queue_references.put(git_ref_extractor)
             else:
                 if ref_name not in existing_refs:
                     git_ref_extractor = Git2DbReference(self._db_name, repo_id, self._git_repo_path,
-                                                        self._before_date, self._import_type, ref_name, ref_type, "",
+                                                        self._before_date, self._import_type, ref_name, ref_type, self._sha,
                                                         self._config, self._log_path)
 
                     queue_references.put(git_ref_extractor)
