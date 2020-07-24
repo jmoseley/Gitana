@@ -119,7 +119,7 @@ class ActivityReportExporter():
             found = [m for m in metrics if m.get('name') == metric_name][0]
             query = found.get('query')
 
-            for k in list(found.keys()):
+            for k in found.keys():
                 if k not in ['name', 'query']:
 
                     k_value = str(self._get_parameter(k, parameters))
@@ -200,7 +200,7 @@ class ActivityReportExporter():
             time_span = exporter_data.get('time_span')
 
             activity2charts = {}
-            for activity in [attr for attr in list(exporter_data.keys()) if attr.endswith('activity')]:
+            for activity in [attr for attr in exporter_data.keys() if attr.endswith('activity')]:
                 activity_name = self._get_activity_name(activity)
                 charts = self._generate_charts(activity, exporter_data.get(activity), project_id, time_span)
                 activity2charts.update({activity_name: charts})

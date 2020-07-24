@@ -6,9 +6,9 @@ from datetime import datetime
 import multiprocessing
 
 from util import multiprocessing_util
-from .querier_slack import SlackQuerier
-from .slack2db_extract_channel import SlackChannel2Db
-from .slack_dao import SlackDao
+from querier_slack import SlackQuerier
+from slack2db_extract_channel import SlackChannel2Db
+from slack_dao import SlackDao
 from util.logging_util import LoggingUtil
 
 

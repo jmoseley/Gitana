@@ -6,10 +6,10 @@ __author__ = 'valerio cosentino'
 from datetime import datetime
 import multiprocessing
 
-from issue2db_extract_issue import GitHubIssue2Db
-from issue2db_extract_issue_dependency import GitHubIssueDependency2Db
+from .issue2db_extract_issue import GitHubIssue2Db
+from .issue2db_extract_issue_dependency import GitHubIssueDependency2Db
 from util import multiprocessing_util
-from github_dao import GitHubDao
+from .github_dao import GitHubDao
 from util.logging_util import LoggingUtil
 
 

@@ -4,8 +4,8 @@ __author__ = 'valerio cosentino'
 
 from datetime import datetime
 
-from .querier_bugzilla import BugzillaQuerier
-from .bugzilla_dao import BugzillaDao
+from querier_bugzilla import BugzillaQuerier
+from bugzilla_dao import BugzillaDao
 from util.logging_util import LoggingUtil
 
 

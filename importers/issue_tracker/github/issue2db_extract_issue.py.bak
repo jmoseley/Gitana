@@ -5,9 +5,9 @@ __author__ = 'valerio cosentino'
 from datetime import datetime
 import re
 
-from .querier_github import GitHubQuerier
+from querier_github import GitHubQuerier
 from util.date_util import DateUtil
-from .github_dao import GitHubDao
+from github_dao import GitHubDao
 from util.logging_util import LoggingUtil
 
 

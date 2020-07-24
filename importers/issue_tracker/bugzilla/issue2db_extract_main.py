@@ -5,11 +5,11 @@ __author__ = 'valerio cosentino'
 from datetime import datetime
 import multiprocessing
 
-from issue2db_extract_issue import BugzillaIssue2Db
-from issue2db_extract_issue_dependency import BugzillaIssueDependency2Db
-from querier_bugzilla import BugzillaQuerier
+from .issue2db_extract_issue import BugzillaIssue2Db
+from .issue2db_extract_issue_dependency import BugzillaIssueDependency2Db
+from .querier_bugzilla import BugzillaQuerier
 from util import multiprocessing_util
-from bugzilla_dao import BugzillaDao
+from .bugzilla_dao import BugzillaDao
 from util.logging_util import LoggingUtil
 
 

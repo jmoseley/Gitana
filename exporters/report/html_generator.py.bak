@@ -163,7 +163,7 @@ class HtmlGenerator():
                             """
             html_string = self._add_activity_name(a.title(), html_string)
             tool2charts = activity2charts.get(a)
-            tool_names = list(tool2charts.keys())
+            tool_names = tool2charts.keys()
 
             for tool_name in tool_names:
                 html_string += """<div class="row">

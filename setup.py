@@ -35,7 +35,7 @@ setup(
         # https://packaging.python.org/en/latest/requirements.html
         install_requires=['networkx', 'gitpython', 'python-bugzilla', 'pygithub',
                           'selenium', 'py-stackexchange', 'slacker', 'pygal',
-                          'mysql-connector-python-rf', 'beautifulsoup'],
+                          'mysql-connector-python-rf', 'beautifulsoup4'],
 
         # List additional groups of dependencies here (e.g. development
         # dependencies). You can install these using the following syntax,

@@ -4,8 +4,8 @@ __author__ = 'valerio cosentino'
 
 from datetime import datetime
 
-from .querier_slack import SlackQuerier
-from .slack_dao import SlackDao
+from querier_slack import SlackQuerier
+from slack_dao import SlackDao
 from util.logging_util import LoggingUtil
 
 

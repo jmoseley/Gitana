@@ -310,7 +310,7 @@ class GitQuerier():
         :param file_name: name of a file
         """
         stats_for_file = ()
-        for f in list(commit_stats_files.keys()):
+        for f in commit_stats_files.keys():
             if f == file_name:
                 stats = commit_stats_files.get(f)
                 stats_for_file = (stats.get('insertions'), stats.get('deletions'), stats.get('lines'))

@@ -5,8 +5,8 @@ __author__ = 'valerio cosentino'
 import re
 from datetime import datetime
 
-from .querier_git import GitQuerier
-from .git_dao import GitDao
+from querier_git import GitQuerier
+from git_dao import GitDao
 from util.logging_util import LoggingUtil
 
 
@@ -185,7 +185,7 @@ class Git2DbReference(object):
                                 for line_detail in line_details:
                                     self._dao.insert_line_details(file_modification_id, line_detail)
                     else:
-                        for diff in self._get_diffs_from_commit(commit, list(commit_stats_files.keys())):
+                        for diff in self._get_diffs_from_commit(commit, commit_stats_files.keys()):
                             # self.dao.check_connection_alive()
                             if self._querier.is_renamed(diff):
                                 file_previous = self._querier.get_rename_from(diff)
