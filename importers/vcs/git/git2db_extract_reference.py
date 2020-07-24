@@ -89,7 +89,7 @@ class Git2DbReference(object):
 
     def _make_it_printable(self, str):
         # converts string to UTF-8 and removes empty and non-alphanumeric characters
-        u = str.decode('utf-8', 'ignore').lower()
+        u = str.lower()
         return re.sub(r'(\W|\s)+', '-', u)
 
     def _get_info_contribution_in_reference(self, reference_name, reference_type, repo_id, from_sha):
@@ -99,15 +99,13 @@ class Git2DbReference(object):
                                                                                   self._before_date)
             else:
                 commits = self._querier.collect_all_commits_after_sha(reference_name, from_sha)
-
-            self._analyse_commits(commits, reference_name, repo_id)
         else:
             if self._before_date:
                 commits = self._querier.collect_all_commits_before_date(reference_name, self._before_date)
             else:
                 commits = self._querier.collect_all_commits(reference_name)
 
-            self._analyse_commits(commits, reference_name, repo_id)
+        self._analyse_commits(commits, reference_name, repo_id)
 
     def _load_all_references(self, repo_id):
         # load all git branches and tags into database

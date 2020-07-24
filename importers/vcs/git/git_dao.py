@@ -413,6 +413,9 @@ class GitDao():
         :type ext: str
         :param ext: extension of the file
         """
+        if name == None:
+            return
+
         cursor = self._cnx.cursor()
         query = "INSERT IGNORE INTO file " \
                 "VALUES (%s, %s, %s, %s)"
