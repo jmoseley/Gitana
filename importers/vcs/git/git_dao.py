@@ -367,6 +367,11 @@ class GitDao():
         :type patch_content: str
         :param patch_content: content of the patch
         """
+        # 4194304 is the max statement size for MySQL by default.
+        if patch_content != None and len(patch_content) > 4194304:
+            self._logger.error('Patch content for commit (' + str(commit_id) + ') is too large, not persisted.');
+            patch_content = None
+
         cursor = self._cnx.cursor()
         query = "INSERT IGNORE INTO file_modification " \
                 "VALUES (NULL, %s, %s, %s, %s, %s, %s, %s)"
