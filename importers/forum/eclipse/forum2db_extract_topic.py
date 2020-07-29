@@ -5,9 +5,9 @@ __author__ = 'valerio cosentino'
 from datetime import datetime
 import time
 
-from querier_eclipse_forum import EclipseForumQuerier
+from .querier_eclipse_forum import EclipseForumQuerier
 from util.date_util import DateUtil
-from eclipse_forum_dao import EclipseForumDao
+from .eclipse_forum_dao import EclipseForumDao
 from util.logging_util import LoggingUtil
 
 

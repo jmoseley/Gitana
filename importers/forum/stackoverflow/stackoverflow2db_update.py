@@ -6,9 +6,9 @@ from datetime import datetime
 import multiprocessing
 
 from util import multiprocessing_util
-from querier_stackoverflow import StackOverflowQuerier
-from stackoverflow2db_extract_topic import StackOverflowTopic2Db
-from stackoverflow_dao import StackOverflowDao
+from .querier_stackoverflow import StackOverflowQuerier
+from .stackoverflow2db_extract_topic import StackOverflowTopic2Db
+from .stackoverflow_dao import StackOverflowDao
 from util.logging_util import LoggingUtil
 
 

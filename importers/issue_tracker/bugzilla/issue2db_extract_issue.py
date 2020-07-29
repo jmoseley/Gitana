@@ -7,9 +7,9 @@ import re
 from email.utils import parseaddr
 import sys
 
-from querier_bugzilla import BugzillaQuerier
+from .querier_bugzilla import BugzillaQuerier
 from util.date_util import DateUtil
-from bugzilla_dao import BugzillaDao
+from .bugzilla_dao import BugzillaDao
 from util.logging_util import LoggingUtil
 
 

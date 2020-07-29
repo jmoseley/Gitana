@@ -4,8 +4,8 @@ __author__ = 'valerio cosentino'
 
 from datetime import datetime
 
-from querier_stackoverflow import StackOverflowQuerier
-from stackoverflow_dao import StackOverflowDao
+from .querier_stackoverflow import StackOverflowQuerier
+from .stackoverflow_dao import StackOverflowDao
 from util.logging_util import LoggingUtil
 
 

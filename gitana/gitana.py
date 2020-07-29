@@ -187,7 +187,7 @@ class Gitana():
             print(p)
 
     def import_git_data(self, db_name, project_name, repo_name, git_repo_path, import_type=1,
-                        references=None, before_date=None, processes=5):
+                        references=None, before_date=None, processes=5, sha=None):
         """
         imports Git data to the DB
 
@@ -221,7 +221,7 @@ class Gitana():
         """
         git2db = Git2DbMain(db_name, project_name,
                             repo_name, git_repo_path, before_date, import_type, references, processes,
-                            self._config, self._log_path)
+                            self._config, self._log_path, sha)
         git2db.extract()
 
     def update_git_data(self, db_name, project_name, repo_name, git_repo_path, before_date=None, processes=5):

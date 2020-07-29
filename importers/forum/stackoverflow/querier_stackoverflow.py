@@ -4,7 +4,7 @@ __author__ = 'valerio cosentino'
 
 import stackexchange
 import re
-from BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 
 from util.token_util import TokenUtil
 from util.date_util import DateUtil

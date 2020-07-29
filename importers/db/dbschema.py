@@ -199,10 +199,10 @@ class DbSchema():
         # creates the database
         cursor = self._cnx.cursor()
 
-        drop_database_if_exists = "DROP DATABASE IF EXISTS " + self._db_name
-        cursor.execute(drop_database_if_exists)
+        # drop_database_if_exists = "DROP DATABASE IF EXISTS " + self._db_name
+        # cursor.execute(drop_database_if_exists)
 
-        create_database = "CREATE DATABASE " + self._db_name
+        create_database = "CREATE DATABASE IF NOT EXISTS" + self._db_name
         cursor.execute(create_database)
 
         cursor.close()

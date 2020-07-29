@@ -5,8 +5,8 @@ __author__ = 'valerio cosentino'
 import re
 from datetime import datetime
 
-from querier_git import GitQuerier
-from git_dao import GitDao
+from .querier_git import GitQuerier
+from .git_dao import GitDao
 from util.logging_util import LoggingUtil
 
 
@@ -89,7 +89,7 @@ class Git2DbReference(object):
 
     def _make_it_printable(self, str):
         # converts string to UTF-8 and removes empty and non-alphanumeric characters
-        u = str.decode('utf-8', 'ignore').lower()
+        u = str.lower()
         return re.sub(r'(\W|\s)+', '-', u)
 
     def _get_info_contribution_in_reference(self, reference_name, reference_type, repo_id, from_sha):
@@ -99,15 +99,13 @@ class Git2DbReference(object):
                                                                                   self._before_date)
             else:
                 commits = self._querier.collect_all_commits_after_sha(reference_name, from_sha)
-
-            self._analyse_commits(commits, reference_name, repo_id)
         else:
             if self._before_date:
                 commits = self._querier.collect_all_commits_before_date(reference_name, self._before_date)
             else:
                 commits = self._querier.collect_all_commits(reference_name)
 
-            self._analyse_commits(commits, reference_name, repo_id)
+        self._analyse_commits(commits, reference_name, repo_id)
 
     def _load_all_references(self, repo_id):
         # load all git branches and tags into database
@@ -185,7 +183,7 @@ class Git2DbReference(object):
                                 for line_detail in line_details:
                                     self._dao.insert_line_details(file_modification_id, line_detail)
                     else:
-                        for diff in self._get_diffs_from_commit(commit, commit_stats_files.keys()):
+                        for diff in self._get_diffs_from_commit(commit, list(commit_stats_files.keys())):
                             # self.dao.check_connection_alive()
                             if self._querier.is_renamed(diff):
                                 file_previous = self._querier.get_rename_from(diff)

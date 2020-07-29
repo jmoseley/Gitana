@@ -310,13 +310,15 @@ class GitQuerier():
         :param file_name: name of a file
         """
         stats_for_file = ()
-        for f in commit_stats_files.keys():
+        for f in list(commit_stats_files.keys()):
             if f == file_name:
                 stats = commit_stats_files.get(f)
                 stats_for_file = (stats.get('insertions'), stats.get('deletions'), stats.get('lines'))
                 break
         if not stats_for_file:
             stats_for_file = (0, 0, 0)
+            if file_name == None:
+                file_name = 'Unknown'
             self._logger.warning("GitQuerier: stats for file " + file_name + " not found!")
         return stats_for_file
 
@@ -339,7 +341,7 @@ class GitQuerier():
                                      " contains unprintable chars and won't be processed!")
         return references
 
-    def get_commit_property(self, commit, prop):
+    def get_commit_property(self, commit, prop, is_retry=False):
         """
         gets a commit property
 
@@ -370,15 +372,20 @@ class GitQuerier():
             elif prop == "committed_date":
                 found = commit.committed_date
         except:
-            # ugly but effective. GitPython may fail in retrieving properties with large content.
-            # Waiting some seconds seems to fix the problem
-            try:
-                time.sleep(5)
-                found = self.get_commit_property(commit, prop)
-            except:
+            if is_retry:
                 found = None
                 self._logger.error("GitQuerier: something went wrong when trying to retrieve the attribute " +
                                    prop + " from the commit " + str(commit.hexsha))
+            else:
+                # ugly but effective. GitPython may fail in retrieving properties with large content.
+                # Waiting some seconds seems to fix the problem
+                try:
+                    time.sleep(2)
+                    found = self.get_commit_property(commit, prop, True)
+                except:
+                    found = None
+                    self._logger.error("GitQuerier: something went wrong when trying to retrieve the attribute " +
+                                    prop + " from the commit " + str(commit.hexsha))
 
         return found
 
@@ -526,6 +533,11 @@ class GitQuerier():
         details = []
         block_comment = False
         previous_block_comment = False
+
+        try:
+            patch_content = patch_content.decode()
+        except (UnicodeDecodeError, AttributeError):
+            pass
 
         lines = patch_content.split('\n')
         previous_original_line = 0

@@ -2,3 +2,7 @@
 *.log
 models-paper
 .idea
+build
+dist
+gitana.egg-info
+*.bak

@@ -95,7 +95,7 @@ class GraphExporter():
             nodes_query = found.get('nodes')
             edges_query = found.get('edges')
 
-            for k in found.keys():
+            for k in list(found.keys()):
                 if k not in ['name', 'edges', 'nodes']:
 
                     k_value = str(self._get_parameter(k, parameters))

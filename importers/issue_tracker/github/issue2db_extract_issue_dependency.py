@@ -4,8 +4,8 @@ __author__ = 'valerio cosentino'
 
 from datetime import datetime
 
-from querier_github import GitHubQuerier
-from github_dao import GitHubDao
+from .querier_github import GitHubQuerier
+from .github_dao import GitHubDao
 from util.logging_util import LoggingUtil
 
 
